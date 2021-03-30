@@ -16,7 +16,7 @@
     }
     else
     {
-        <h1>All Players</h1>
+        <h1 class="text-dark">All Players</h1>
     }
 
     @* Creates cards for all the players listed *@
@@ -34,5 +34,5 @@
     }
 
 </div>
-@* sends data to index() *@
+@* sends data into the index view *@
 <div page-info="@Model.PageNumberingInfo" team-name="@Model.TeamsName" page-url-teamname="@Model.TeamsName"></div>
