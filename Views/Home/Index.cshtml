@@ -1,0 +1,38 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@model IndexViewModel
+
+<div class="container">
+    @* Shows the team name at the top if there is a team sort, shows "All Players" if not *@
+    @if (Model.Teams.Count() == 1)
+    {
+        @foreach (var y in Model.Teams)
+        {
+
+            <h1>@y.TeamName</h1>
+        }
+    }
+    else
+    {
+        <h1>All Players</h1>
+    }
+
+    @* Creates cards for all the players listed *@
+    @foreach (var x in Model.BowlingLeague)
+    {
+
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">@x.BowlerFirstName @x.BowlerMiddleInit @x.BowlerLastName </h4>
+                <p class="card-text">@x.BowlerAddress</p>
+                <p class="card-text">@x.BowlerCity @x.BowlerState, @x.BowlerZip</p>
+                <p class="card-text">@x.BowlerPhoneNumber</p>
+            </div>
+        </div>
+    }
+
+</div>
+@* sends data to index() *@
+<div page-info="@Model.PageNumberingInfo" team-name="@Model.TeamsName" page-url-teamname="@Model.TeamsName"></div>

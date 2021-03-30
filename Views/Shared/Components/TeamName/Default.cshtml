@@ -1,0 +1,18 @@
+﻿@model IEnumerable<Teams>
+
+@* highlights when no teams are selected *@
+<a class="btn btn-block @(ViewBag.SelectedType == "1" || ViewBag.SelectedType == null ? "btn-primary" : "btn-outline-secondary")" 
+   asp-action="Index" 
+   asp-controller="Home" 
+   asp-route-teamname="">Home</a>
+<br />
+@* first line highlights teams when they are selected, other elements tell what to call when button is clicked *@
+@foreach (var x in Model)
+{
+    <a class="btn btn-block @(x.TeamName == ViewBag.SelectedType ? "btn-primary" : "btn-outline-secondary")" 
+       asp-action="Index"
+       asp-controller="Home"
+       asp-route-bowlerobject="@x.TeamId"
+       asp-route-teamname="@x.TeamName">@x.TeamName</a>
+       <br />
+}
